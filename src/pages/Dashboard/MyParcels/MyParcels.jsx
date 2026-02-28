@@ -5,13 +5,14 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { FiEdit } from 'react-icons/fi';
 import { FaMagnifyingGlass, FaTrashCan } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 
 const MyParcels = () => {
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    const { data: parcels = [] , refetch} = useQuery({
+    const { data: parcels = [], refetch } = useQuery({
         queryKey: ['my-parcels', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/parcels?email=${user?.email}`);
@@ -67,7 +68,8 @@ const MyParcels = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Cost</th>
-                            <th>Payment Status</th>
+                            <th>Payment</th>
+                            <th>Delivery Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -78,7 +80,18 @@ const MyParcels = () => {
                                 <th>{index + 1}</th>
                                 <td>{parcel.parcelName}</td>
                                 <td>$ {parcel.cost}</td>
-                                <td>Blue</td>
+                                <td>
+                                    {
+                                        parcel.paymentStatus === "paid" ?
+                                            <div className="badge badge-success">Paid</div>
+                                            :
+
+                                            <Link to={`/dashboard/payment/${parcel._id}`}>
+                                                <div className="badge btn btn-sm btn-primary badge-warning text-black">Pay</div>
+                                            </Link>
+                                    }
+                                </td>
+                                <td>{parcel.deliveryStatus}</td>
 
                                 <td>
                                     {/* view */}
