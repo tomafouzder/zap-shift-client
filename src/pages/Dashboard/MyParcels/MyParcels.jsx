@@ -54,17 +54,18 @@ const MyParcels = () => {
         });
     }
 
-    // const handlePayment = async (parcel) => {
-    //     const paymentInfo = {
-    //         cost: parcel.cost,
-    //         parcelId: parcel._id,
-    //         senderEmail: parcel.senderEmail,
-    //         parcelName: parcel.parcelName
-    //     }
-    //     const res = await axiosSecure.post('/payment-checkout-session', paymentInfo)
-    //     console.log(res.data.url);
-    //     window.location.assign(res.data.url);
-    // }
+
+    const handlePayment = async (parcel) => {
+        const paymentInfo = {
+            cost: parcel.cost,
+            parcelId: parcel._id,
+            senderEmail: parcel.senderEmail,
+            parcelName: parcel.parcelName
+        }
+        const res = await axiosSecure.post('/payment-checkout-session', paymentInfo)
+        console.log(res.data.url);
+        window.location.assign(res.data.url);
+    }
 
 
     return (
@@ -95,18 +96,18 @@ const MyParcels = () => {
                                 <td>
                                     {
                                         parcel.paymentStatus === "paid" ?
-                                            <div className="badge badge-success">Paid</div>
+                                            <div className="font-bold text-green-500">Paid</div>
                                             :
 
-                                            <Link to={`/dashboard/payment/${parcel._id}`}>
-                                                <div className="badge btn btn-sm btn-primary badge-warning text-black">Pay</div>
-                                            </Link>
+                                            // <Link to={`/dashboard/payment/${parcel._id}`}>
+                                            //     <div className="btn btn-sm btn-primary bg-primary  text-black">Pay</div>
+                                            // </Link>
 
-                                            // <button
-                                            //     onClick={() => handlePayment(parcel)}
-                                            //     className='btn btn-sm btn-primary text-black'>
-                                            //     Pay
-                                            // </button>
+                                            <button
+                                                onClick={() => handlePayment(parcel)}
+                                                className='btn font-bold btn-sm btn-primary text-black '>
+                                                Pay
+                                            </button>
                                     }
                                 </td>
                                 <td>{parcel.deliveryStatus}</td>

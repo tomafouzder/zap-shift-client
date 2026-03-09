@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaRegCreditCard } from 'react-icons/fa6';
 import { GiToggles } from 'react-icons/gi';
 import { IoHomeOutline, IoSettingsOutline } from 'react-icons/io5';
 import { LuPackageOpen } from 'react-icons/lu';
@@ -62,6 +63,17 @@ const DashboardLayout = () => {
                                 </div>
 
                                 <span className="is-drawer-close:hidden">My Parcels</span>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink to="/dashboard/payment-history" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Payment History">
+
+                                <div className='font-bold text-lg'>
+                                    <FaRegCreditCard className='font-bold' />
+                                </div>
+
+                                <span className="is-drawer-close:hidden">Payment History</span>
                             </NavLink>
                         </li>
 
