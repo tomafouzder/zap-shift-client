@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaMotorcycle } from 'react-icons/fa';
+import { FaMotorcycle, FaUsers } from 'react-icons/fa';
 import { FaRegCreditCard } from 'react-icons/fa6';
 import { GiToggles } from 'react-icons/gi';
 import { IoHomeOutline, IoSettingsOutline } from 'react-icons/io5';
@@ -86,6 +86,17 @@ const DashboardLayout = () => {
                                 </div>
 
                                 <span className="is-drawer-close:hidden">Approve Riders</span>
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink to="/dashboard/users-management" className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Users Management">
+
+                                <div className='font-bold text-xl'>
+                                    <FaUsers className='font-bold' />
+                                </div>
+
+                                <span className="is-drawer-close:hidden">Users Management</span>
                             </NavLink>
                         </li>
 

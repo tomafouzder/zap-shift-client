@@ -28,7 +28,7 @@ const Register = () => {
                 RegisterFormData.append('image', profileImage);
 
                 // send the photo to store and get the photo url
-                const image_API_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host_key}`
+                const image_API_URL = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_host_key}`
 
                 axios.post(image_API_URL, RegisterFormData)
                     .then(res => {
@@ -41,11 +41,12 @@ const Register = () => {
                             photoURL: photoURL
                         }
                         axiosSecure.post('/users', userInfo)
-                        .then(res =>{
-                            if(res.data.insertedId){
-                                console.log('user created in the database');
-                            }
-                        })
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user created in the database');
+                                }
+                            })
+
 
 
                         // update user profile to firebase
@@ -62,6 +63,9 @@ const Register = () => {
                             .catch(error => {
                                 console.log(error)
                             })
+                    })
+                    .catch(err => {
+                        console.log(err)
                     })
 
             })

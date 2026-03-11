@@ -1,7 +1,7 @@
 import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
-import { FaUserCheck } from 'react-icons/fa';
+import { FaEye, FaUserCheck } from 'react-icons/fa';
 import { IoPersonRemoveSharp } from 'react-icons/io5';
 import { FaTrashCan } from 'react-icons/fa6';
 import Swal from 'sweetalert2';
@@ -80,6 +80,10 @@ const ApproveRiders = () => {
 
                                 {/* action button */}
                                 <td className='flex  items-center gap-1'>
+                                    <button
+                                        className='btn'>
+                                        <FaEye />
+                                    </button>
                                     <button
                                         onClick={() => handleApproval(rider)} className='btn'>
                                         <FaUserCheck />

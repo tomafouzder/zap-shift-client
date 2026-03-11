@@ -14,7 +14,7 @@ const GoogleLogin = () => {
         signInGoogle()
             .then(result => {
                 console.log(result.user);
-            
+
 
                 // create user in the database
                 const userInfo = {
@@ -22,11 +22,11 @@ const GoogleLogin = () => {
                     displayName: result.user.displayName,
                     photoURL: result.user.photoURL
                 }
-                axiosSecure.post('/users', userInfo )
-                .then(res=>{
-                    console.log('google user data is store in database', res.data);
+                axiosSecure.post('/users', userInfo)
+                    .then(res => {
+                        console.log('google user data is store in database', res.data);
                         navigate(location?.state || '/');
-                })
+                    })
 
             })
             .catch(error => {
